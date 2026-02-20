@@ -1,0 +1,129 @@
+// ═══════════════════════════════════════════════════════════════
+//  INSIGHTHUB — GLOBAL DIALOG / MODAL STYLES
+//  Responsividade, tema dark e consistência visual
+// ═══════════════════════════════════════════════════════════════
+
+// ── Base: todas as modais do sistema ──
+.q-dialog {
+
+  // Garante que cards dentro de dialogs nunca estourem a tela
+  .q-card {
+    max-width: 95vw;
+  }
+
+  // Selects dentro de dialogs
+  .q-field--outlined .q-field__control {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+// ── Mobile: modais menores e ajustadas ──
+@media (max-width: 599px) {
+  // Para modais NÃO maximizadas: forçar largura total
+  .q-dialog__inner--min {
+    padding: 8px !important;
+
+    > .q-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      max-height: 92vh !important;
+      border-radius: 16px !important;
+    }
+  }
+
+  // Para modais maximizadas: padding interno
+  .q-dialog__inner--maximized {
+    > .q-card {
+      border-radius: 0 !important;
+
+      > .q-card__section {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      // Bar no topo
+      > .q-bar {
+        padding: 0 8px;
+
+        .text-subtitle1,
+        .text-caption,
+        .orbitron-font {
+          font-size: 0.75rem !important;
+          letter-spacing: 0.3px;
+        }
+      }
+    }
+  }
+
+  // Tabs dentro de dialogs/modais: scrollável no mobile
+  .q-dialog .q-tabs {
+    .q-tabs__content {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+
+    .q-tab {
+      min-width: auto;
+      padding: 0 10px;
+
+      .q-tab__label {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  // Formulários dentro de dialogs: espaçamento menor
+  .q-dialog .q-form {
+    .row.q-col-gutter-md {
+      gap: 0;
+
+      > [class*="col-md-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  // Ações de dialog: full width buttons
+  .q-dialog .q-card__actions {
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .q-btn {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  // Pre/code blocks dentro de modais: scroll horizontal
+  .q-dialog pre {
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 0.7rem !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  TEMA DARK PARA DIALOGS
+// ═══════════════════════════════════════════════════════════════
+
+// Card de dialog padrão dark
+.dialog-dark-card {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 15, 30, 0.98) 0%,
+    rgba(8, 8, 18, 0.99) 100%
+  );
+  border: 1px solid rgba(0, 245, 255, 0.12);
+  border-radius: 20px;
+  color: #f1f5f9;
+}
+
+// Overlay mais escuro para melhor contraste
+.q-dialog__backdrop {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
+}

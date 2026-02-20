@@ -1,0 +1,13 @@
+
+ Dev mode............... spa
+ Pkg quasar............. v2.18.6
+ Pkg @quasar/app-vite... v1.11.0
+ Pkg vite............... v2.9.18
+ Debugging.............. enabled
+
+ App •  TIP  • 🚀  You specified an explicit quasar.config.js > devServer > port. It is recommended to use a different devServer > port for each Quasar mode to avoid browser cache issues. Example: ctx.mode.ssr ? 9100 : ...
+ App • ⚠️  The file /index.html is missing. Please add it back.
+
+
+ App • ⚠️   FAIL  Files validation not passed successfully
+

@@ -1,0 +1,689 @@
+// InsightHub - Futuristic Global Styles
+// ============================================
+
+@import 'quasar.variables.scss';
+
+// Import Google Font
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// ============================================
+// THEME VARIABLES (CSS Custom Properties)
+// ============================================
+
+:root {
+  // Dark Theme (Default)
+  --bg-primary: #030305;
+  --bg-secondary: #0a0a0f;
+  --bg-card: rgba(15, 15, 25, 0.85);
+  --bg-glass: rgba(20, 20, 35, 0.6);
+  --bg-input: rgba(255, 255, 255, 0.05);
+  --bg-drawer: rgba(8, 8, 15, 0.98);
+  --bg-header: linear-gradient(90deg, rgba(8, 8, 15, 0.98) 0%, rgba(12, 12, 22, 0.98) 100%);
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-heading: #f1f5f9;
+  --text-icon: #94a3b8;
+  
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(0, 245, 255, 0.3);
+  
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --accent-color: #00f5ff;
+  --accent-soft: rgba(0, 245, 255, 0.15);
+
+  --table-hover: rgba(0, 245, 255, 0.05);
+  --badge-bg: rgba(255, 255, 255, 0.06);
+  --separator-color: rgba(255, 255, 255, 0.08);
+  --toolbar-title: #f1f5f9;
+}
+
+body.body--light {
+  // Light Theme Overrides (High Contrast)
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-input: #f1f5f9;
+  --bg-drawer: #ffffff;
+  --bg-header: linear-gradient(90deg, #ffffff 0%, #f8fafc 100%);
+  
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --text-heading: #0f172a;
+  --text-icon: #334155;
+  
+  --border-color: #e2e8f0;
+  --border-glow: rgba(14, 165, 233, 0.4);
+  
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --accent-color: #0891b2;
+  --accent-soft: rgba(14, 165, 233, 0.1);
+
+  --table-hover: rgba(14, 165, 233, 0.06);
+  --badge-bg: #f1f5f9;
+  --separator-color: #e2e8f0;
+  --toolbar-title: #0f172a;
+}
+
+// ============================================
+// BASE STYLES
+// ============================================
+
+html, body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+// Futuristic font for headings
+.text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6,
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
+  color: var(--text-heading);
+}
+
+// ============================================
+// GLASSMORPHISM UTILITIES
+// ============================================
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--border-glow);
+  }
+}
+
+// ============================================
+// NEON GLOW EFFECTS (dark only)
+// ============================================
+
+.neon-cyan {
+  color: $neon-cyan;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.7);
+}
+
+.neon-purple {
+  color: $neon-purple;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.7);
+}
+
+.neon-pink {
+  color: $neon-pink;
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.7);
+}
+
+body.body--light {
+  .neon-cyan, .neon-purple, .neon-pink {
+    text-shadow: none;
+  }
+}
+
+.glow-border-cyan {
+  border: 1px solid rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.3), inset 0 0 15px rgba(0, 245, 255, 0.05);
+}
+
+// ============================================
+// GRADIENT BACKGROUNDS
+// ============================================
+
+.bg-gradient-dark {
+  background: var(--bg-secondary);
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(ellipse at top, rgba(0, 245, 255, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+              var(--bg-primary);
+}
+
+body.body--light {
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at top, rgba(14, 165, 233, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
+                var(--bg-primary);
+  }
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+// ============================================
+// CUSTOM SCROLLBAR
+// ============================================
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--accent-color);
+  }
+}
+
+// ============================================
+// QUASAR COMPONENT OVERRIDES
+// ============================================
+
+// Dialog
+.q-dialog__backdrop {
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.q-dialog .q-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  
+  // Fix for modal scrolling
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 90vh !important;
+  overflow: visible !important;
+  
+  .q-card__section {
+    color: var(--text-primary);
+  }
+  
+  .q-card__actions {
+    color: var(--text-primary);
+  }
+
+  // Mobile dialog fix
+  @media (max-width: 599px) {
+    overflow: auto !important;
+    max-height: 85vh !important;
+    width: 100% !important;
+    margin: 8px !important;
+  }
+}
+
+// Tables
+.q-table__container {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.q-table {
+  thead tr th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+
+  tbody tr td {
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-primary);
+  }
+  
+  tbody tr:hover {
+    background: var(--table-hover) !important;
+  }
+
+  .q-table__bottom {
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+// Inputs
+.q-field--outlined .q-field__control {
+  border-radius: 12px;
+}
+
+.q-field__control {
+  background: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+}
+
+.q-field__label {
+  color: var(--text-secondary) !important;
+}
+
+.q-field__native, .q-field__prefix, .q-field__suffix, .q-field__input {
+  color: var(--text-primary) !important;
+}
+
+// Drawers
+.q-drawer {
+  background: var(--bg-drawer) !important;
+  border-right: 1px solid var(--border-color) !important;
+  
+  .q-item {
+    color: var(--text-secondary);
+    
+    &.q-router-link--active, &:hover {
+      color: var(--text-primary);
+    }
+  }
+}
+
+// Header
+.q-header {
+  background: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.q-toolbar__title {
+  color: var(--toolbar-title) !important;
+}
+
+// Buttons
+.q-btn {
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+// Cards
+.q-card {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+// Tabs
+.q-tabs {
+  color: var(--text-secondary);
+}
+
+.q-tab__label {
+  color: var(--text-secondary);
+}
+
+.q-tab--active .q-tab__label {
+  color: var(--accent-color);
+}
+
+// Separator
+.q-separator {
+  background: var(--separator-color) !important;
+}
+
+// Select Menu Dark/Light Mode Fix
+.q-menu {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--card-shadow) !important;
+
+  .q-item {
+    color: var(--text-primary) !important;
+    min-height: 40px;
+
+    &:hover,
+    &.q-manual-focusable--focused {
+      background: var(--accent-soft) !important;
+    }
+
+    &.q-item--active,
+    &[aria-selected="true"] {
+      color: var(--accent-color) !important;
+      background: var(--accent-soft) !important;
+    }
+  }
+
+  .q-virtual-scroll__content {
+    background: transparent !important;
+  }
+}
+
+// Expansion items
+.q-expansion-item .q-item {
+  color: var(--text-primary);
+}
+
+// Chips
+.q-chip {
+  color: var(--text-primary);
+}
+
+// Toggle
+.q-toggle__label {
+  color: var(--text-primary);
+}
+
+// Loading
+.q-loading__backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body.body--light {
+  .q-loading__backdrop {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ============================================
+// LIGHT MODE: TEXT COLOR OVERRIDES
+// ============================================
+// Quasar helper classes that hardcode white/grey tones
+// must be overridden for light mode readability.
+
+body.body--light {
+  // White text → near-black
+  .text-white {
+    color: var(--text-primary) !important;
+  }
+  
+  // Grey text → darker
+  .text-grey-5, .text-grey-6 {
+    color: var(--text-secondary) !important;
+  }
+  .text-grey-4 {
+    color: var(--text-secondary) !important;
+  }
+  .text-grey-7, .text-grey-8 {
+    color: var(--text-muted) !important;
+  }
+
+  // bg-dark / bg-black backgrounds → light
+  .bg-dark {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+  }
+  .bg-dark-page {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+  }
+  .bg-black {
+    background: #f1f5f9 !important;
+    color: var(--text-primary) !important;
+  }
+
+  // Cyan text → accessible cyan
+  .text-cyan {
+    color: #0891b2 !important;
+  }
+  
+  // Orbitron fonts should stay dark
+  .orbitron-font {
+    color: var(--text-heading);
+  }
+
+  // Status indicator dot
+  .status-dot {
+    background: #0891b2 !important;
+  }
+
+  // Version chip
+  .version-chip {
+    border-color: rgba(8, 145, 178, 0.3) !important;
+    color: #0891b2 !important;
+  }
+
+  // User avatar
+  .user-avatar {
+    background: rgba(8, 145, 178, 0.1) !important;
+    border-color: rgba(8, 145, 178, 0.3) !important;
+    color: #0891b2 !important;
+  }
+
+  // Drawer styles
+  .brand-icon {
+    background: rgba(8, 145, 178, 0.1) !important;
+    border-color: rgba(8, 145, 178, 0.3) !important;
+    color: #0891b2 !important;
+  }
+
+  .brand-name {
+    background: linear-gradient(90deg, #0891b2, #7c3aed) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+
+  .brand-subtitle {
+    color: #64748b !important;
+  }
+
+  .nav-header {
+    color: #64748b !important;
+  }
+
+  .nav-icon-wrapper {
+    background: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+  }
+
+  .nav-label {
+    color: #334155 !important;
+  }
+
+  .nav-caption {
+    color: #64748b !important;
+  }
+
+  .nav-arrow {
+    color: #94a3b8 !important;
+  }
+
+  .nav-item {
+    &:hover {
+      background: rgba(8, 145, 178, 0.06) !important;
+
+      .nav-icon-wrapper {
+        background: rgba(8, 145, 178, 0.1) !important;
+        border-color: rgba(8, 145, 178, 0.3) !important;
+        color: #0891b2 !important;
+      }
+    }
+
+    &--active {
+      background: rgba(8, 145, 178, 0.08) !important;
+
+      .nav-icon-wrapper {
+        background: rgba(8, 145, 178, 0.15) !important;
+        border-color: rgba(8, 145, 178, 0.4) !important;
+        color: #0891b2 !important;
+        box-shadow: 0 0 12px rgba(8, 145, 178, 0.15) !important;
+      }
+
+      .nav-label {
+        color: #0f172a !important;
+      }
+
+      .nav-arrow {
+        color: #0891b2 !important;
+      }
+    }
+  }
+
+  .drawer-footer {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  .status-label {
+    color: #475569 !important;
+  }
+
+  .status-value {
+    color: #334155 !important;
+  }
+
+  // Glass card light mode adjustments
+  .glass-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  // Futuristic card light
+  .futuristic-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  // Page-level dark backgrounds → transparent
+  .systems-table,
+  .history-table {
+    background: transparent !important;
+
+    :deep(th) {
+      color: #475569 !important;
+    }
+    :deep(td) {
+      border-bottom-color: #e2e8f0 !important;
+      color: #0f172a !important;
+    }
+  }
+
+  // Dark layer backgrounds
+  .bg-dark-layer {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+  }
+
+  // Hero card
+  .hero-card {
+    border-color: #e2e8f0 !important;
+
+    &:hover {
+      border-color: rgba(8, 145, 178, 0.3) !important;
+      box-shadow: 0 4px 16px rgba(8, 145, 178, 0.1) !important;
+    }
+
+    .hero-content {
+      border-left-color: rgba(8, 145, 178, 0.4) !important;
+      color: #334155 !important;
+    }
+  }
+
+  // Insight cards
+  .insight-card {
+    border-color: #e2e8f0 !important;
+
+    &:hover {
+      border-color: rgba(8, 145, 178, 0.3) !important;
+    }
+  }
+
+  // Report content 
+  .report-content {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #334155 !important;
+  }
+
+  // Code blocks
+  .code-block, pre.bg-black {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+  }
+
+  // Onboarding
+  .onboarding-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  .step-card {
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+
+    &:hover {
+      background: rgba(8, 145, 178, 0.05) !important;
+      border-color: rgba(8, 145, 178, 0.2) !important;
+    }
+  }
+
+  // Test cards
+  .test-card {
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    }
+  }
+
+  // Q-bar
+  .q-bar {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+  }
+
+  // Futuristic header / menu overrides
+  .futuristic-header {
+    background: var(--bg-header) !important;
+    border-bottom-color: #e2e8f0 !important;
+  }
+
+  .futuristic-drawer {
+    background: #ffffff !important;
+    border-right-color: #e2e8f0 !important;
+  }
+
+  .futuristic-menu {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  // Logo icon
+  .logo-icon {
+    background: rgba(8, 145, 178, 0.1) !important;
+    color: #0891b2 !important;
+  }
+
+  // Status chips with better contrast 
+  .status-chip {
+    font-weight: 700;
+  }
+}
+
+// ============================================
+// ANIMATIONS
+// ============================================
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 245, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 245, 255, 0); }
+}
+
+body.body--light {
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0.3); }
+    70% { box-shadow: 0 0 0 10px rgba(8, 145, 178, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0); }
+  }
+}

@@ -1,0 +1,32 @@
+# Docker Compose Override for Development
+# This file is automatically loaded with docker-compose.yml
+
+version: '3.8'
+
+services:
+  # Backend API - Development Mode
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run start:dev
+    environment:
+      NODE_ENV: development
+
+  # Frontend - Development Mode
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npx quasar dev -p 8080 -H 0.0.0.0
+    environment:
+      NODE_ENV: development
+      VITE_API_URL: http://localhost:3000

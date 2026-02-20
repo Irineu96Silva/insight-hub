@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint:*)",
+      "Bash(docker:*)",
+      "Bash(npm run build:*)",
+      "Bash(findstr:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx quasar build:*)",
+      "Bash(npm install:*)",
+      "Bash(npm test:*)",
+      "Bash(docker-compose:*)",
+      "Bash(timeout 15 npm run start:dev:*)",
+      "Bash(timeout 20 npx quasar dev:*)"
+    ]
+  }
+}

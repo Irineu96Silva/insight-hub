@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # PostgreSQL Database
+  # ============================================
+  db:
+    image: postgres:16-alpine
+    container_name: insighthub-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-insighthub}
+      POSTGRES_USER: ${DB_USER:-insighthub}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-insighthub_dev_2024}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-insighthub}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================
+  # NestJS Backend API
+  # ============================================
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: insighthub-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-insighthub}
+      DB_USER: ${DB_USER:-insighthub}
+      DB_PASSWORD: ${DB_PASSWORD:-insighthub_dev_2024}
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-in-production}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-24h}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_BASE_URL: ${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-openai/gpt-3.5-turbo}
+      OPENROUTER_FALLBACK_MODEL: ${OPENROUTER_FALLBACK_MODEL:-meta-llama/llama-3.2-3b-instruct:free}
+      PORT: 3000
+    ports:
+      - "${API_PORT:-3000}:3000"
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  # ============================================
+  # Quasar Frontend
+  # ============================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: insighthub-frontend
+    restart: unless-stopped
+    environment:
+      API_URL: ${API_URL:-http://localhost:3000}
+    ports:
+      - "${FRONTEND_PORT:-8080}:8080"
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - api
+
+volumes:
+  pgdata:

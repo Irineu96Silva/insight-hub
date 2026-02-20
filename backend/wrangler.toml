@@ -1,0 +1,14 @@
+name = "insighthub-backend"
+main = "src/worker-entry.ts"
+compatibility_date = "2024-11-12"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+DATABASE_URL = "" # Set in Cloudflare Dashboard
+STORAGE_DRIVER = "r2"
+JWT_SECRET = ""
+
+[[r2_buckets]]
+binding = "STORAGE_BUCKET"
+bucket_name = "insighthub-files"
+preview_bucket_name = "insighthub-files-preview"

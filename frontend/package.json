@@ -1,0 +1,39 @@
+{
+  "name": "insighthub-frontend",
+  "version": "1.0.0",
+  "description": "InsightHub Frontend",
+  "productName": "InsightHub",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "test": "echo \"See package.json -> scripts -> test\" && exit 0",
+    "dev": "quasar dev",
+    "build": "quasar build"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.17.0",
+    "axios": "^1.6.0",
+    "marked": "^17.0.2",
+    "pinia": "^2.1.0",
+    "quasar": "^2.14.0",
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^1.8.0",
+    "@quasar/vite-plugin": "^1.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "eslint": "^8.50.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "sass": "^1.97.3",
+    "typescript": "^5.3.0",
+    "vue-tsc": "^3.2.4"
+  },
+  "engines": {
+    "node": "^24 || ^22 || ^20 || ^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
