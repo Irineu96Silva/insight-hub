@@ -58,6 +58,7 @@ import { LoggingMiddleware } from './common/middleware/logging.middleware';
         extra: {
           // Necessário para o Supabase Pooler (Supavisor)
           options: `-c search_path=public`,
+          family: 4, // Force IPv4 (Render compatibility)
         },
       }),
       inject: [ConfigService],
