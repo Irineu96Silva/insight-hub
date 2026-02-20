@@ -74,6 +74,7 @@ import { LoggingMiddleware } from './common/middleware/logging.middleware';
     AuthModule,
     NetworkTestsModule,
     StorageModule,
+    SeederModule,
   ],
   controllers: [AppController],
   providers: [AppService],
