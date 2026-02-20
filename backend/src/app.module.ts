@@ -14,7 +14,7 @@ import { AiEngineModule } from './modules/ai-engine/ai-engine.module';
 import { LlmModule } from './modules/llm/llm.module';
 import { NetworkTestsModule } from './modules/network-tests/network-tests.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { DashboardModule } from './modules/dashboard/dashboard.module';
+
 import { AuthModule } from './modules/auth/auth.module';
 import { StorageModule } from './modules/storage/storage.module';
 
