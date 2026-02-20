@@ -14,7 +14,9 @@ import { AiEngineModule } from './modules/ai-engine/ai-engine.module';
 import { LlmModule } from './modules/llm/llm.module';
 import { NetworkTestsModule } from './modules/network-tests/network-tests.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { StorageModule } from './modules/storage/storage.module';
 
 import { User } from './modules/users/entities/user.entity';
 import { System } from './modules/systems/entities/system.entity';
@@ -69,6 +71,7 @@ import { LoggingMiddleware } from './common/middleware/logging.middleware';
     DashboardModule,
     AuthModule,
     NetworkTestsModule,
+    StorageModule,
   ],
   controllers: [AppController],
   providers: [AppService],
