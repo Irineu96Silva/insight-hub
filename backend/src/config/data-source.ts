@@ -3,6 +3,11 @@ import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
+// Force IPv4 to avoid ENETUNREACH on IPv6 networks
+if (require('dns').setDefaultResultOrder) {
+  require('dns').setDefaultResultOrder('ipv4first');
+}
+
 // Carrega variáveis de ambiente do arquivo .env na raiz do monorepo
 dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
 

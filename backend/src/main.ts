@@ -1,6 +1,11 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { dns } from 'dns';
+// Force IPv4 locally and in deployment to avoid ENETUNREACH on IPv6
+if (require('dns').setDefaultResultOrder) {
+  require('dns').setDefaultResultOrder('ipv4first');
+}
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
