@@ -12,6 +12,8 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       process.env.FRONTEND_URL,
+      'https://insighthub-frontend.pages.dev',
+      'https://insighthub-frontend.pages.dev/',
       'http://localhost:8080',
       'http://127.0.0.1:8080',
       /^http:\/\/192\.168\.\d{1,3}\.\d{1,3}:8080$/, // Allow local network 192.168.x.x
