@@ -1,5 +1,5 @@
 name = "insighthub-backend"
-main = "src/worker-entry.ts"
+main = "dist/worker-entry.js"
 compatibility_date = "2024-11-12"
 compatibility_flags = ["nodejs_compat"]
 
@@ -12,3 +12,5 @@ JWT_SECRET = ""
 binding = "STORAGE_BUCKET"
 bucket_name = "insighthub-files"
 preview_bucket_name = "insighthub-files-preview"
+
+

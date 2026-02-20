@@ -431,6 +431,13 @@ export class ReportGeneratorService {
     return relativePath; // Ou this.storageService.getUrl(relativePath) se quiser URL pública
   }
 
+  async getReportContent(filename: string): Promise<Buffer | null> {
+    const relativePath = `${this.REPORTS_PATH}/${filename}`;
+    const exists = await this.storageService.exists(relativePath);
+    if (!exists) return null;
+    return this.storageService.read(relativePath);
+  }
+
   async listReports(): Promise<Array<{ filename: string; size: number; created: Date; format: ReportFormat }>> {
     const files = await this.storageService.list(this.REPORTS_PATH);
     

@@ -142,8 +142,8 @@ export class AiEngineController {
     @Param('filename') filename: string,
     @Res() res: Response,
   ) {
-    const filepath = this.reportGenerator.getReportPath(filename);
-    if (!filepath) {
+    const buffer = await this.reportGenerator.getReportContent(filename);
+    if (!buffer) {
       res.status(404).json({ message: 'Relatório não encontrado' });
       return;
     }
@@ -156,7 +156,9 @@ export class AiEngineController {
 
     res.setHeader('Content-Type', contentType);
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-    res.download(filepath, filename);
+    res.setHeader('Content-Length', buffer.length.toString());
+    
+    res.send(buffer);
   }
 
   /**

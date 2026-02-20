@@ -28,6 +28,8 @@ import { LlmProvider } from './modules/llm/entities/llm-provider.entity';
 import { NetworkTest } from './modules/network-tests/entities/network-test.entity';
 import { SystemFile } from './modules/systems/entities/system-file.entity';
 
+import { SeederModule } from './modules/seeder/seeder.module';
+
 import { LoggingMiddleware } from './common/middleware/logging.middleware';
 
 @Module({
